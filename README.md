@@ -1,3 +1,3 @@
 # DataMining
 
-The program numbers are in according to the images( DM1, DM2)
+The program numbers are in accordance with the images (dm1, dm2)
