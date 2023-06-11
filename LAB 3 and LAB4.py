@@ -1,8 +1,10 @@
 import pandas as pd
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.tree import DecisionTreeClassifier,plot_tree
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import accuracy_score, cohen_kappa_score, mean_absolute_error, mean_squared_error
+import matplotlib.pyplot as plt
+
 
 #Assuming you have the dataset stored in a CSV file named 'dataset.csv'
 dataset = pd.read_csv('dataset.csv')
@@ -30,9 +32,11 @@ model.fit(X_train, y_train)
 y_pred = model.predict(X_test)
 
 # Calculating the accuracy
-accuracy = (y_pred == y_test).mean()
+accuracy=accuracy_score(y_test,y_pred)
 print("Decision Tree Model:")
 print(model)
+plt.figure(figsize=(15, 10))
+plot_tree(model, feature_names=list(X.columns), class_names=['0', '1'], filled=True)
 print("\nEvaluation Metrics:")
 print("Accuracy:", accuracy)
 perc_crct=(accuracy*100)
