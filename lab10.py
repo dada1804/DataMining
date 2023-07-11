@@ -1,4 +1,4 @@
-# 10a If Then Rules
+ # 10a If Then Rules
 import pandas as pd
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.preprocessing import LabelEncoder
