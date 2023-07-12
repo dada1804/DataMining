@@ -2,15 +2,14 @@ import pandas as pd
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 # Load the credit dataset
-credit_data = pd.read_csv('credit_dataset.csv')
+credit_data = pd.read_csv('credit-g_csv.csv')
 # Preprocess the data
-numeric_features = ['age', 'income', 'credit_score'] # Example of numeric features
-categorical_features = ['education', 'marital_status'] # Example of categorical
-features
+numeric_features = ['age', 'duration', 'credit_amount'] # Example of numeric features
+categorical_features = ['other_parties', 'property_magnitude'] # Example of categorical
 # Apply label encoding to categorical features
 label_encoder = LabelEncoder()
 for feature in categorical_features:
-credit_data[feature] = label_encoder.fit_transform(credit_data[feature])
+    credit_data[feature] = label_encoder.fit_transform(credit_data[feature])
 # Combine numeric and encoded categorical features
 features = numeric_features + categorical_features
 X = credit_data[features]
@@ -27,9 +26,3 @@ labels = kmeans.labels_
 credit_data['Cluster'] = labels
 # Print the cluster assignments
 print(credit_data['Cluster'].value_counts())
-
-
-Output:
-Cluster 0: 500
-Cluster 1: 700
-Cluster 2: 300
